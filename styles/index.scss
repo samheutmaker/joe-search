@@ -1,0 +1,70 @@
+@import "normalize.css";
+
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab");
+
+$blue: #3E889F;
+$black: #444452;
+
+html, body {
+    font-family: 'Roboto Slab', serif;
+    min-height: 100%;
+}
+
+.Layout {
+    position: absolute;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.Page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    color: $black;
+}
+
+.Index {
+	display: flex;
+    .Slide {
+        transition: all 0.6s ease;
+        position: relative;
+        min-height: 100vh;
+        width: 0;
+        top: 0;
+        left: 0;
+        background: rgba(134, 92, 214, 1);
+        background: -moz-linear-gradient(-45deg, rgba(134, 92, 214, 1) 0%, rgba(62, 136, 159, 1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(134, 92, 214, 1)), color-stop(100%, rgba(62, 136, 159, 1)));
+        background: -webkit-linear-gradient(-45deg, rgba(134, 92, 214, 1) 0%, rgba(62, 136, 159, 1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(134, 92, 214, 1) 0%, rgba(62, 136, 159, 1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(134, 92, 214, 1) 0%, rgba(62, 136, 159, 1) 100%);
+        background: linear-gradient(135deg, rgba(134, 92, 214, 1) 0%, rgba(62, 136, 159, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#865cd6', endColorstr='#3e889f', GradientType=1 );
+
+        &.Open {
+            width: 50%;
+        }
+    }
+
+
+
+    .About {
+        transition: all 0.6s ease;
+        position: relative;
+        width: 50%;
+        top: 0;
+        background: white;
+        opacity: 0;
+        padding: 14px;
+
+        &.Open {
+            opacity: 1;
+        }
+
+        .Intro {
+        	font-size: 1.8rem;
+        	margin-top: 5rem;
+
+        }
+    }
+}
