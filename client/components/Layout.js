@@ -1,5 +1,5 @@
 import { Component, PropTypes } from 'react'
-import stylesheet from 'styles/index.scss'
+import stylesheet from 'client/styles/index.scss'
 
 class Layout extends Component {
 	constructor(props) {

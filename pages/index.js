@@ -1,46 +1,42 @@
-import { Component, PropTypes } from 'react'
-import Layout from '../components/Layout'
-import Type from '../components/Type'
+import { Component } from 'react'
+import PropTypes from 'prop-types'
+import Layout from '../client/components/Layout'
+import SearchInput from '../client/components/SearchInput'
+import ProductList from '../client/components/ProductList'
+import * as Actions from '../client/actions/actions.js'
+import ActionBinder from '../lib/ActionBinder'
 
 export default class Index extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showSlide: false,
-			showAbout: false
+			...Actions.getInitialState()
 		}
 	}
-	componentDidMount() {
-		setTimeout(() => {
-			this.setState({showSlide: true})
-		}, 500);
-
-		setTimeout(() => {
-			this.setState({showAbout: true})
-		}, 1100);
+	actions(){
+		return ActionBinder([Actions], this);
 	}
-	renderIntro(){
-		return (
-			<div className="Intro">
-				<Type type="Hi, I'm Sam. I write software and do other cool stuff. I live in Seattle and work at a startup." typeSpeed="75"/>				
-			</div>
-		);
+	getChildContext(){
+		return {
+			actions: this.actions()
+		};
+	}
+	componentDidMount() {
+		this.actions().search();
 	}
 	render(){
 		return (
 			<Layout>	
 				<div className="Index Page">
-					<div className={`Slide ${this.state.showSlide ? 'Open' : ''}`}></div>
-					<div className={`About ${this.state.showAbout ? 'Open' : ''}`}>
-						{(() => {
-							if(this.state.showAbout && this.state.showSlide) {
-								return this.renderIntro()
-							}
-						})()}
-					</div>
+					<h1>Joe Search</h1>
+				  <SearchInput {...this.state} />
+				  <ProductList products={this.state.products} />
 				</div>
 			</Layout>
 		);
 	}
 }
 
+Index.childContextTypes = {
+  actions: PropTypes.object
+};
