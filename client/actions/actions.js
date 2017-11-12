@@ -55,7 +55,6 @@ export function search() {
       searchQuery
     ];
   }
-  console.error(searchQuery);
   return set.call(this, {
       searchXHR: true,
       recentSearches
