@@ -8,7 +8,6 @@ export default class ProductList extends Component {
     this.state = {}
   }
   render(){
-    let ps = this.props.products;
     return (
       <div className="ProductList">
         {this.props.products.map((p, i) => <Product key={i} product={p} />)}
