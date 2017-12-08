@@ -1,6 +1,8 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import Layout from '../client/components/Layout'
+import SearchInput from '../client/components/SearchInput'
+import ProductList from '../client/components/ProductList'
 import * as Actions from '../client/actions/actions.js'
 import ActionBinder from '../lib/ActionBinder'
 
@@ -26,11 +28,9 @@ export default class Index extends Component {
 		return (
 			<Layout>	
 				<div className="Index Page">
-					<h1>Smashbros.</h1>
-					<h2>ALBUM OUT NOW</h2>
-					<div className="ImageContainer">
-						<img src="/static/images/smash-bros-chop-suey.png" />
-					</div>
+					<h1>Joe Search</h1>
+				  <SearchInput {...this.state} />
+				  <ProductList products={this.state.products} />
 				</div>
 			</Layout>
 		);
